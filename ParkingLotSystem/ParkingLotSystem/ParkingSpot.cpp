@@ -1,4 +1,5 @@
 #include "ParkingSpot.h"
+#include <iostream>
 
 ParkingSpot::ParkingSpot(int spotNumber, ParkingSpotType spotType)
 	: spotNum(spotNumber), type(spotType), available(true), v(nullptr) { }
@@ -40,4 +41,19 @@ void ParkingSpot::removeVehicle() {
 
 void ParkingSpot::displayInfo() {
 
+	cout << "Spot Number : " + to_string(spotNum) + " which is a ";
+
+	switch (type)
+	{
+	case ParkingSpotType::BIKE: cout << "BIKE SPOT"; break;
+	case ParkingSpotType::TRUCK: cout << "TRUCK SPOT"; break;
+	case ParkingSpotType::CAR: cout << "CAR SPOT"; break;
+	}
+
+	if (available)
+		cout << " is not occupied ";
+	else cout << " occupied ";
+
+	if (v)
+		v->displayInfo();
 }
